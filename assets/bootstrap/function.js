@@ -39,8 +39,29 @@ mainImage.src = this.src;
  });
 });
 });
+document.querySelectorAll('.bakery-faq-question').forEach(function (btn) {
+btn.addEventListener('click', function () {
+const currentItem = this.parentElement;
+document.querySelectorAll('.bakery-faq-item').forEach(function (item) {
+if (item !== currentItem) {
+ item.classList.remove('active');
+}
+});
+currentItem.classList.toggle('active');
+});
+});
 
-
+document.getElementById('bakeryContactForm').addEventListener('submit', function (e) {
+e.preventDefault();
+const statusEl = document.getElementById('bakeryContactStatus');
+statusEl.textContent = 'Thank you! Your message has been received.';
+this.reset();
+});
+document.getElementById('bakeryNewsletterForm').addEventListener('submit', function (e) {
+e.preventDefault();
+document.getElementById('bakeryNewsletterMsg').textContent = 'Subscribed! Thank you for joining our newsletter.';
+this.reset();
+});
 
 
 // sujetions
